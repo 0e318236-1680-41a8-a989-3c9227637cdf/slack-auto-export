@@ -83,7 +83,6 @@ class SlackAutoExport(object):
                 )
             )
 
-        print(list(self.channels.values()))
         self._write_json_file(list(self.channels.values()), (output_dir, "channels.json"))
         self._write_json_file(list(self.users.values()), (output_dir, "users.json"))
 
