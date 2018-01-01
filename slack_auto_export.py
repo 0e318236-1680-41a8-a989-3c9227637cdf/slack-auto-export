@@ -15,7 +15,7 @@ class SlackAutoExport(object):
 
     def _get_channels_list(self):
         return {c["name"]: c for c in
-                self.slack.channels.list().body["channels"]}
+                 self.slack.channels.list().body["channels"]}
 
     def _get_channel_history(self, channel_id, request_pause_period=0.5):
         latest = None
@@ -83,8 +83,9 @@ class SlackAutoExport(object):
                 )
             )
 
-        self._write_json_file(self.channels, (output_dir, "channels.json"))
-        self._write_json_file(self.users, (output_dir, "users.json"))
+        print(list(self.channels.values()))
+        self._write_json_file(list(self.channels.values()), (output_dir, "channels.json"))
+        self._write_json_file(list(self.users.values()), (output_dir, "users.json"))
 
     def _write_json_file(self, obj, paths):
         filepath = os.path.join(*paths)
